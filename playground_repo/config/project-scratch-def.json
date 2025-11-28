@@ -1,7 +1,11 @@
 {
   "orgName": "tico company",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "features": [
+    "AuthorApex",
+    "RecordTypes",
+    "PersonAccounts"
+  ],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
