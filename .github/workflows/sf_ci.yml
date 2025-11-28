@@ -1,0 +1,31 @@
+name: CI using sf-playground-ci image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/fvitalesf/sf-playground-ci:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.PAT }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify tools in container
+        run: |
+          echo "User: $(whoami)"
+          echo "PWD: $(pwd)"
+          sf --version || sf version
+
+      - name: Your CI logic
+        run: |
+          # put your sfdx/sf build, test, deploy commands here
+          echo "Running CI..."
